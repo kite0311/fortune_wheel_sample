@@ -4,6 +4,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 
+import 'next_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -83,11 +85,19 @@ class _FortuneWheelStateState extends State<FortuneWheelState> {
                       setState(() {
                         /// 選択された値をresultsに追加する
                         results.add(Item[selectedIndex!]);
+
                         /// 次のスピンに備えてnullにする
                         selectedIndex = null;
                       });
                     }
                     showSnackBar(context, 'End Roulette!!');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            NextPage(results),
+                      ),
+                    );
                   },
                 ),
               ),

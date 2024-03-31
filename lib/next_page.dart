@@ -16,9 +16,21 @@ class NextPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'ルーレット結果: $results',
-              style: TextStyle(fontSize: 24),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: results.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Row(
+                    children: [
+                      Text(
+                        'ルーレット結果:',
+                      ),
+                      Text(results[index]),
+                    ],
+                  ),
+                );
+              },
             ),
             SizedBox(height: 16),
             ElevatedButton(
